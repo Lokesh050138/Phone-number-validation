@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project-two</title>
+
+    <style>
+        body {
+            background-color: rgb(59, 59, 79);
+            font-size: 20px;
+        }
+
+        .container h1 {
+            text-align: center;
+            color: white;
+        }
+
+        .container.phone {
+            background-color: white;
+            width: 200px;
+            height: 350px;
+            margin: auto;
+            border-top: 2.5rem solid black;
+            border-bottom: 2.5rem solid black;
+            border-left: .5rem solid black;
+            border-right: .5rem solid black;
+            border-radius: .5rem;
+        }
+
+        .circle {
+            width: 10px;
+            height: 10px;
+            background-color: white;
+            border-radius: 50%;
+            margin: auto;
+            margin-top: -1.2rem;
+        }
+
+        .btn1,
+        .btn2 {
+            margin-top: -2.2rem;
+            padding: .3rem;
+            font-size: 15px;
+            position: absolute;
+        }
+
+        .btn1 {
+            margin-left: 34rem;
+        }
+
+        .btn2 {
+            margin-left: 41.8rem;
+        }
+
+        .contact-form {
+            text-align: center;
+            padding: 0.2rem;
+            padding-top: 1.4rem;
+        }
+
+        .Number {
+            width: 180px;
+            height: 1.8rem;
+            border-radius: .5rem;
+            margin-top: .5rem;
+            text-align: center;
+            font-size: 18px;
+        }
+
+
+        .valid-message {
+            color: green;
+        }
+        .invalid-message {
+            color: red;
+        }
+        .empty-message {
+            color: orange;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container heading">
+        <h1>Telephone Number Validator</h1>
+    </div>
+
+    <div class="container phone">
+        <div class="circle"></div>
+
+        <div class="contact-form">
+            <form method="post">
+                <label for="Number">Enter a Phone Number:</label>
+                <input type="text" id="phone" name="phone" class="Number" required>
+                <p id="message"></p>
+            </form>
+        </div>
+    </div>
+    <input type="submit" value="Check" onclick="validatePhoneNumber()" class="btn1">
+    <input type="reset" value="Clear" onclick="resetPage()" class="btn2">
+
+    <script>
+
+        function validatePhoneNumber() {
+
+            var phoneNumber = document.getElementById('phone').value;
+
+            var requiredLength = 10;
+
+            var messageElement = document.getElementById('message');
+
+            if (phoneNumber === '') {
+                document.getElementById('message').textContent = 'Phone number is empty.';
+                messageElement.className = 'empty-message';
+
+            } else if (phoneNumber.length === requiredLength) {
+                document.getElementById('message').textContent = 'Phone number is valid.';
+                messageElement.className = 'valid-message';
+            } else {
+                document.getElementById('message').textContent = 'Phone number is not valid.';
+                messageElement.className = 'invalid-message';
+            }
+        };
+
+        function resetPage() {
+            document.getElementById('phone').value = '';
+
+            document.getElementById('message').textContent = '';
+        }
+
+    </script>
+</body>
+
+</html>
